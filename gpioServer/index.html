@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PiServer</title>
+    <script type="text/javascript" language="javascript" src="index.js" charset="utf8"></script> 
+    <script type="text/javascript">
+        var xmlUpdate = UpdatePinState();
+        var cmdControler = CmdControl();
+        var pinControler = PinControl();
+    </script>
+    <link rel="stylesheet" href="index.css" type="text/css" />
+</head>
+<body onload="xmlUpdate.update()">
+<h1>RaspPi3 GPIO Control</h1>
+<div>
+    <div id="cmd">
+        <table>
+            <tr><th colspan='4' align="left">
+                Example:
+            </th></tr>
+            <tr>
+                <th>
+                    Output Pin
+                </th>
+                <th>
+                    =
+                </th>
+                <th colspan='2' >
+                    Logic statement
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    GPIO.0
+                </th>
+                <th>
+                    =
+                </th>
+                <th colspan='2' >
+                    !(GPIO.1&GPIO.2)|(GPIO.3^GPIO.4)
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <input id="outInput"/>
+                </th>
+                <th>=</th>
+                <th>
+                    <input id="cmdInput"/>
+                </th>
+                <th>
+                    <button id="cmdBtn" onclick="cmdControler.addCmd()">Send</button>
+                </th>
+            </tr>
+        </table>
+    </div>
+
+        <!--<button onclick="xmlUpdate.update()">update</button>-->
+        <div id="cmdRes"></div>
+    </div>
+    <div id="piPins">
+        <div class="pinRow">
+            <div class="pinPower left" id="pin1" onclick=""></div>
+            <div class="pinText left">3.3V</div>
+            <div class="pinPower right" id="pin2" onclick=""></div>
+            <div class="pinText right">5V</div>
+        </div>
+        <div class="pinRow">
+            <div class="pinFn left" id="pin3" onclick=""></div>
+            <div class="pinText left">SDA.1</div>
+            <div class="pinPower right" id="pin4" onclick=""></div>
+            <div class="pinText right">5V</div>
+        </div>
+        <div class="pinRow">
+            <div class="pinFn left" id="pin5" onclick=""></div>
+            <div class="pinText left">SDAL.1</div>
+            <div class="pinGnd right" id="pin6" onclick=""></div>
+            <div class="pinText right">GND</div>
+        </div>
+        <div class="pinRow">
+            <div class="pinOffOut left" id="pin7" onclick="pinControler.changeState(this.id)"></div>
+            <div class="pinText left">GPIO.7</div>
+            <div class="pinDir left" id="pin7Dir" onclick="pinControler.changeDir(this.id)"></div>
+            <div class="pinFn right" id="pin8" onclick=""></div>
+            <div class="pinText right">TXD</div>
+        </div>
+        <div class="pinRow">
+            <div class="pinGnd left" id="pin9" onclick=""></div>
+            <div class="pinText left">GND</div>
+            <div class="pinFn right" id="pin10" onclick=""></div>
+            <div class="pinText right">RXD</div>
+        </div>
+        <div class="pinRow">
+            <div class="pinOffOut left" id="pin11" onclick="pinControler.changeState(this.id)"></div>
+            <div class="pinText left">GPIO.0</div>
+            <div class="pinDir left" id="pin11Dir" onclick="pinControler.changeDir(this.id)">OUT</div>
+            <div class="pinOffOut right" id="pin12" onclick="pinControler.changeState(this.id)"></div>
+            <div class="pinText right">GPIO.1</div>
+            <div class="pinDir right" id="pin12Dir" onclick="pinControler.changeDir(this.id)">OUT</div>
+        </div>
+        <div class="pinRow">
+            <div class="pinOffOut left" id="pin13" onclick="pinControler.changeState(this.id)"></div>
+            <div class="pinText left">GPIO.2</div>
+            <div class="pinDir left" id="pin13Dir" onclick="pinControler.changeDir(this.id)">OUT</div>
+            <div class="pinGnd right" id="pin14" onclick=""></div>
+            <div class="pinText right">GND</div>
+        </div>
+        <div class="pinRow">
+            <div class="pinOffOut left" id="pin15" onclick="pinControler.changeState(this.id)"></div>
+            <div class="pinText left">GPIO.3</div>
+            <div class="pinDir left" id="pin15Dir" onclick="pinControler.changeDir(this.id)">OUT</div>
+            <div class="pinOffOut right" id="pin16" onclick="pinControler.changeState(this.id)"></div>
+            <div class="pinText right">GPIO.4</div>
+            <div class="pinDir right" id="pin16Dir" onclick="pinControler.changeDir(this.id)">OUT</div>
+        </div>
+        <div class="pinRow">
+            <div class="pinPower left" id="pin17" onclick=""></div>
+            <div class="pinText left">3.3V</div>
+            <div class="pinOffOut right" id="pin18" onclick="pinControler.changeState(this.id)"></div>
+            <div class="pinText right">GPIO.5</div>
+            <div class="pinDir right" id="pin18Dir" onclick="pinControler.changeDir(this.id)">OUT</div>
+        </div>
+        <div class="pinRow">
+            <div class="pinFn left" id="pin19" onclick=""></div>
+            <div class="pinText left">MOSI</div>
+            <div class="pinGnd right" id="pin20" onclick=""></div>
+            <div class="pinText right">GND</div>
+        </div>
+
+        <div class="pinRow">
+            <div class="pinFn left" id="pin21" onclick=""></div>
+            <div class="pinText left">MISO</div>
+            <div class="pinOffOut right" id="pin22" onclick="pinControler.changeState(this.id)"></div>
+            <div class="pinText right">GPIO.6</div>
+            <div class="pinDir right" id="pin22Dir" onclick="pinControler.changeDir(this.id)">OUT</div>
+        </div>
+        <div class="pinRow">
+            <div class="pinFn left" id="pin23" onclick=""></div>
+            <div class="pinText left">SCLK</div>
+            <div class="pinFn right" id="pin24" onclick=""></div>
+            <div class="pinText right">CE0</div>
+        </div>
+        <div class="pinRow">
+            <div class="pinGnd left" id="pin25" onclick=""></div>
+            <div class="pinText left">GND</div>
+            <div class="pinFn right" id="pin26" onclick=""></div>
+            <div class="pinText right">CE1</div>
+        </div>
+        <div class="pinRow">
+            <div class="pinFn left" id="pin27" onclick=""></div>
+            <div class="pinText left">SDA.0</div>
+            <div class="pinFn right" id="pin28" onclick=""></div>
+            <div class="pinText right">SCL.0</div>
+        </div>
+        <div class="pinRow">
+            <div class="pinOffOut left" id="pin29" onclick="pinControler.changeState(this.id)"></div>
+            <div class="pinText left">GPIO.21</div>
+            <div class="pinDir left" id="pin29Dir" onclick="pinControler.changeDir(this.id)">OUT</div>
+            <div class="pinGnd right" id="pin30" onclick=""></div>
+            <div class="pinText right">GND</div>
+        </div>
+        <div class="pinRow">
+            <div class="pinOffOut left" id="pin31" onclick="pinControler.changeState(this.id)"></div>
+            <div class="pinText left">GPIO.22</div>
+            <div class="pinDir left" id="pin31Dir" onclick="pinControler.changeDir(this.id)">OUT</div>
+            <div class="pinOffOut right" id="pin32" onclick="pinControler.changeState(this.id)"></div>
+            <div class="pinText right">GPIO.26</div>
+            <div class="pinDir right" id="pin32Dir" onclick="pinControler.changeDir(this.id)">OUT</div>
+        </div>
+        <div class="pinRow">
+            <div class="pinOffOut left" id="pin33" onclick="pinControler.changeState(this.id)"></div>
+            <div class="pinText left">GPIO.23</div>
+            <div class="pinDir left" id="pin33Dir" onclick="pinControler.changeDir(this.id)">OUT</div>
+            <div class="pinGnd right" id="pin34" onclick=""></div>
+            <div class="pinText right">GND</div>
+        </div>
+        <div class="pinRow">
+            <div class="pinOffOut left" id="pin35" onclick="pinControler.changeState(this.id)"></div>
+            <div class="pinText left">GPIO.24</div>
+            <div class="pinDir left" id="pin35Dir" onclick="pinControler.changeDir(this.id)">OUT</div>
+            <div class="pinOffOut right" id="pin36" onclick="pinControler.changeState(this.id)"></div>
+            <div class="pinText right">GPIO.27</div>
+            <div class="pinDir right" id="pin36Dir" onclick="pinControler.changeDir(this.id)">OUT</div>
+        </div>
+        <div class="pinRow">
+            <div class="pinOffOut left" id="pin37" onclick="pinControler.changeState(this.id)"></div>
+            <div class="pinText left">GPIO.25</div>
+            <div class="pinDir left" id="pin37Dir" onclick="pinControler.changeDir(this.id)">OUT</div>
+            <div class="pinOffOut right" id="pin38" onclick="pinControler.changeState(this.id)"></div>
+            <div class="pinText right">GPIO.28</div>
+            <div class="pinDir right" id="pin38Dir" onclick="pinControler.changeDir(this.id)">OUT</div>
+        </div>
+        <div class="pinRow">
+            <div class="pinGnd left" id="pin39" onclick=""></div>
+            <div class="pinText left">GND</div>
+            <div class="pinOffOut right" id="pin40" onclick="pinControler.changeState(this.id)"></div>
+            <div class="pinText right">GPIO.29</div>
+            <div class="pinDir right" id="pin40Dir" onclick="pinControler.changeDir(this.id)">OUT</div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,109 @@
+.pinOffOut{
+	cursor:pointer;
+	background:#000; 
+}
+
+.pinOnOut{
+	cursor:pointer;
+	background:#fd0; 
+}
+
+.pinOffIn{
+	background:#000; 
+}
+
+.pinOnIn{
+	background:#fd0; 
+}
+
+.pinBusy{
+	background:#662222; 
+}
+
+.pinRow .pinPower{
+	background:#000;
+    border:5px solid #F00;
+}
+
+.pinRow .pinFn{
+	background:#000;
+    border:5px solid #0af;
+}
+
+.pinRow .pinGnd{
+	background:#000;
+    border:5px solid #666;
+}
+
+.pinRow .pinDir{
+	cursor:pointer;
+	width:40px; 
+	height:16px; 
+	background:#ccc;
+    border:2px solid #000;
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: center;
+    line-height:16px;
+}
+
+.left{
+	float:left; 
+	text-align:left;
+}
+
+.right{
+	float:right; 
+	text-align:right;
+}
+
+.pinText .left
+{
+    margin-left: 5px;
+}
+
+.pinText .right
+{
+    margin-right: 5px;
+}
+
+
+#piPins .pinText {
+	width:60px;
+	height:25px;
+    border:0px;
+    display: inline;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.pinRow div{
+	width:10px; 
+	height:10px; 
+    border:5px solid #F82;
+}
+
+.pinRow{
+	width:300px;
+	height:25px;
+}
+
+#cmd 
+{
+	width:400px;
+}
+
+#cmdInput
+{
+	width:200px;
+} 
+
+#outInput
+{
+	width:100px;
+}
+#cmd table
+{
+	font-style: normal;
+	font-size: 15px;
+}
