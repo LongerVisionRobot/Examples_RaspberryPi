@@ -1,5 +1,4 @@
-<!---
-
+<!--
 ################################################################################
 #                                                                              #
 #                                                                              #
@@ -34,7 +33,8 @@
 # URL:              http://www.longervision.cn                                 #
 # Create Date:      2017-04-10                                                 #
 ################################################################################
---->
+-->
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en">
 <head>
@@ -48,54 +48,56 @@
     </script>
     <link rel="stylesheet" href="index.css" type="text/css" />
 </head>
-<body onload="xmlUpdate.update()">
-<h1>RaspPi3 GPIO Control</h1>
-<div>
-    <div id="cmd">
-        <table>
-            <tr><th colspan='4' align="left">
-                Example:
-            </th></tr>
-            <tr>
-                <th>
-                    Output Pin
-                </th>
-                <th>
-                    =
-                </th>
-                <th colspan='2' >
-                    Logic statement
-                </th>
-            </tr>
-            <tr>
-                <th>
-                    GPIO.0
-                </th>
-                <th>
-                    =
-                </th>
-                <th colspan='2' >
-                    !(GPIO.1&GPIO.2)|(GPIO.3^GPIO.4)
-                </th>
-            </tr>
-            <tr>
-                <th>
-                    <input id="outInput"/>
-                </th>
-                <th>=</th>
-                <th>
-                    <input id="cmdInput"/>
-                </th>
-                <th>
-                    <button id="cmdBtn" onclick="cmdControler.addCmd()">Send</button>
-                </th>
-            </tr>
-        </table>
-    </div>
 
-        <!--<button onclick="xmlUpdate.update()">update</button>-->
+<body onload="xmlUpdate.update()">
+    <h1>Raspberry Pi 3B GPIO Control</h1>
+    <div>
+        <div id="cmd">
+            <table>
+                <tr><th colspan='4' align="left">
+                    Example:
+                </th></tr>
+                <tr>
+                    <th>
+                        Output Pin
+                    </th>
+                    <th>
+                        =
+                    </th>
+                    <th colspan='2' >
+                        Logic statement
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        GPIO.0
+                    </th>
+                    <th>
+                        =
+                    </th>
+                    <th colspan='2' >
+                        !(GPIO.1&amp;GPIO.2)|(GPIO.3^GPIO.4)
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <input id="outInput"/>
+                    </th>
+                    <th>=</th>
+                    <th>
+                        <input id="cmdInput"/>
+                    </th>
+                    <th>
+                        <button id="cmdBtn" onclick="cmdControler.addCmd()">Send</button>
+                    </th>
+                </tr>
+            </table>
+        </div>
+
+            <!--<button onclick="xmlUpdate.update()">update</button>-->
         <div id="cmdRes"></div>
     </div>
+
     <div id="piPins">
         <div class="pinRow">
             <div class="pinPower left" id="pin1" onclick=""></div>
@@ -236,6 +238,5 @@
             <div class="pinDir right" id="pin40Dir" onclick="pinControler.changeDir(this.id)">OUT</div>
         </div>
     </div>
-</div>
 </body>
 </html>
