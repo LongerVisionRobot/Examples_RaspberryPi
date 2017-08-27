@@ -34,8 +34,9 @@
 # Create Date:      2017-04-10                                                 #
 ################################################################################
 
-from http.server import HTTPServer, BaseHTTPRequestHandler
 import re
+import sysfrom http.server import HTTPServer, BaseHTTPRequestHandler
+
 import os
 import time
 from lxml.builder import E
@@ -333,7 +334,9 @@ class ServerHttpHandler(BaseHTTPRequestHandler):
             self.wfile.write(indexFile.read())
 
 
-
-handler = ServerHttpHandler
-http_server = HTTPServer(('192.168.1.50', int(10000)), handler)
-http_server.serve_forever()
+if len(sys.argv) != 3:
+    print("Usage: python3 Server.py SERVER_IP SERVER_PORT")
+else:
+    handler = ServerHttpHandler
+    http_server = HTTPServer((argv[1], int(argv[2])), handler)
+    http_server.serve_forever()
