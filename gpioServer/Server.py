@@ -338,5 +338,5 @@ if len(sys.argv) != 3:
     print("Usage: python3 Server.py SERVER_IP SERVER_PORT")
 else:
     handler = ServerHttpHandler
-    http_server = HTTPServer((argv[1], int(argv[2])), handler)
+    http_server = HTTPServer((sys.argv[1], int(sys.argv[2])), handler)
     http_server.serve_forever()
