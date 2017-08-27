@@ -35,7 +35,8 @@
 ################################################################################
 
 import re
-import sysfrom http.server import HTTPServer, BaseHTTPRequestHandler
+import sys
+from http.server import HTTPServer, BaseHTTPRequestHandler
 
 import os
 import time
